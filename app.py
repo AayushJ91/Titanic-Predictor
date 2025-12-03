@@ -5,6 +5,7 @@ import numpy as np
 st.header("TITANIC Classifier")
 st.write("Let's check whether the passenger you are making was dead or not")
 
+# extracting the best trained ML model for prediction
 def load_model():
     with open(r'Monthly\\Project\\best_model.pkl','rb') as file:
         model = pickle.load(file)
@@ -12,6 +13,7 @@ def load_model():
     
 model = load_model()
 
+# taking inputs as required in the model
 pclass = st.number_input("The class in which your passenger travelled", max_value=3,min_value=1)
 sex = st.radio("Gender of your passenger", ["Male", "Female"])
 age = st.slider("Age of your passenger",0,100,50)
@@ -21,7 +23,7 @@ fare = st.number_input("Fare your passenger paid (in $)", max_value=512)
 Embarked_Town = st.selectbox("Which town your passenger embarked at", ["Southampton", "Queenstown", "Cherboug"])
 
 
-
+# changing the categorical property to numerical property
 if sex == "Male":
     sex = 0
 else:
@@ -34,7 +36,10 @@ if Embarked_Town == "Southampton":
 elif Embarked_Town == "Queenstown":
     embarked_Q = 1
 
+# transforming the raw inputs into inputs on which our model will work
 input = np.array([[pclass,sex,age,siblings,parents,fare,embarked_Q,embarked_S]])
+
+# the final step of predicting
 if st.button("Dead or Survived"):
     output = model.predict(input)
 
