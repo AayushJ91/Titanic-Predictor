@@ -1,4 +1,4 @@
-# 🚢 Titanic Survivla Prediction App
+# 🚢 Titanic Survival Prediction App
 
 ## Introduction
 This Streamlit application predicts the survival of a passenger based on their trip and demographical details. User can interactivvely create a passenger to test the prediction.
