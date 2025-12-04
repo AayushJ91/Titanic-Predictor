@@ -7,7 +7,7 @@ st.write("Let's check whether the passenger you are making was dead or not")
 
 # extracting the best trained ML model for prediction
 def load_model():
-    with open(r'Monthly\\Project\\best_model.pkl','rb') as file:
+    with open(r'best_model.pkl','rb') as file:
         model = pickle.load(file)
         return model
     
